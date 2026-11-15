@@ -78,18 +78,13 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Subtitle */}
-          <Link href="/" className="flex items-center gap-3.5 group">
-            <div className="relative h-12 w-auto aspect-[3.2/1] flex items-center">
-              <Image
-                src="/logo.png"
-                alt="COREVILT Technologies"
-                width={170}
-                height={52}
-                priority
-                className="object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-            </div>
-            <div className="hidden xl:block border-l border-slate-300 pl-3.5 py-0.5">
+          <Link href="/" className="flex items-center gap-3 group">
+            <img
+              src="/logo.png"
+              alt="COREVILT Technologies"
+              className="h-11 sm:h-12 w-auto max-w-[210px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+            <div className="hidden xl:block border-l border-slate-300 pl-3 py-0.5">
               <div className="text-[11px] font-bold text-[#0F172A] tracking-wider uppercase">
                 TURNKEY INFRASTRUCTURE
               </div>

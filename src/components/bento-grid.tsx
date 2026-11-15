@@ -19,7 +19,7 @@ import { CORE_VERTICALS } from "@/lib/constants";
 
 export function BentoGrid() {
   return (
-    <section className="py-20 bg-[#F8FAFC] border-b border-slate-200">
+    <section id="solutions" className="py-20 bg-[#F8FAFC] border-b border-slate-200 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="max-w-3xl mx-auto text-center space-y-3 mb-16">

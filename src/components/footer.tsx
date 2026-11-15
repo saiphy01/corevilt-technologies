@@ -66,13 +66,11 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
         {/* Brand & Identity Column (4 cols) */}
         <div className="lg:col-span-4 space-y-5">
-          <Link href="/" className="inline-block bg-white p-3 rounded-xl shadow-md">
-            <Image
+          <Link href="/" className="inline-block bg-white px-3.5 py-2.5 rounded-2xl shadow-md hover:shadow-lg transition">
+            <img
               src="/logo.png"
               alt="COREVILT Technologies"
-              width={160}
-              height={48}
-              className="object-contain"
+              className="h-11 sm:h-12 w-auto max-w-[220px] object-contain"
             />
           </Link>
 
