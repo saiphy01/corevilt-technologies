@@ -118,7 +118,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
       {/* ============================================================== */}
       <section
         id="top"
-        className="relative w-full min-h-[596px] md:h-[calc(100vh-50px)] md:max-h-[776px] bg-[#F8FAFC] text-slate-900 overflow-hidden flex items-center border-b border-slate-200/80"
+        className="relative w-full min-h-[500px] md:h-[calc(100vh-140px)] md:max-h-[680px] bg-[#F8FAFC] text-slate-900 overflow-hidden flex items-center border-b border-slate-200/80"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         aria-label="Corevilt Enterprise Authority Hero"
@@ -127,15 +127,15 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
         <div className="absolute inset-0 bg-[radial-gradient(#CBD5E1_1px,transparent_1px)] [background-size:24px_24px] opacity-70 pointer-events-none" />
 
         {/* Soft radial ambient illumination */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-emerald-100/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-[450px] h-[450px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-[350px] h-[350px] bg-emerald-100/30 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-[1376px] mx-auto px-4 sm:px-8 lg:px-12 w-full py-6 md:py-0 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full py-6 md:py-0 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-center">
             {/* ========================================================== */}
             {/* LEFT COLUMN (58% width): High-Authority Typography         */}
             {/* ========================================================== */}
-            <div className="md:col-span-7 xl:col-span-7 space-y-4 sm:space-y-5">
+            <div className="md:col-span-7 xl:col-span-7 space-y-3.5 sm:space-y-4">
               {/* Eyebrow Badge with Pulse Indicator */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#0B66C3] animate-ping" />
@@ -193,7 +193,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
               </div>
 
               {/* Trust Metric Strip */}
-              <div className="pt-3 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+              <div className="pt-2.5 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
                 {[
                   { label: "10 Verticals", desc: "Turnkey Integrated" },
                   { label: "CEA & CPRI", desc: "Statutory Standards" },
@@ -213,7 +213,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
             {/* Fits 100% inside the viewport on the right side of hero    */}
             {/* ========================================================== */}
             <div className="md:col-span-5 xl:col-span-5 relative w-full">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg shadow-slate-200/80 group/showcase aspect-[16/10] max-h-[420px] w-full">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg shadow-slate-200/80 group/showcase aspect-[16/10] max-h-[360px] w-full">
                 {SHOWCASE_SLIDES.map((s, index) => {
                   const isActive = index === currentSlide;
                   return (
