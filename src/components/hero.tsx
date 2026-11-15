@@ -291,17 +291,24 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
               <div className="flex items-center justify-between gap-2 mt-3">
                 {SHOWCASE_SLIDES.map((s, index) => {
                   const isActive = index === currentSlide;
+                  const labels: Record<string, string> = {
+                    headquarters: "HQ",
+                    software: "SOFTWARE",
+                    energy: "SOLAR EPC",
+                    security: "SECURITY",
+                    infrastructure: "IT INFRA",
+                  };
                   return (
                     <button
                       key={s.id}
                       onClick={() => setCurrentSlide(index)}
-                      className={`flex-1 py-1.5 px-1 rounded-md text-[10px] font-mono font-bold transition-all text-center truncate ${
+                      className={`flex-1 py-2 px-1 rounded-lg text-[11px] font-mono font-bold transition-all text-center tracking-wide ${
                         isActive
-                          ? "bg-[#0B66C3] text-white shadow"
-                          : "bg-slate-900/80 hover:bg-slate-800 text-slate-400 border border-slate-800"
+                          ? "bg-[#0B66C3] text-white shadow-lg ring-1 ring-sky-400"
+                          : "bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-700/80"
                       }`}
                     >
-                      {s.id === "headquarters" ? "HQ" : s.id.toUpperCase()}
+                      {labels[s.id] || s.id.toUpperCase()}
                     </button>
                   );
                 })}
