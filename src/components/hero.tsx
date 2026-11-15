@@ -1,139 +1,111 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  Shield,
+  Zap,
+  Cpu,
+  Sun,
+  Server,
+  Building2,
+} from "lucide-react";
 
-interface HeroSlide {
+interface ShowcaseSlide {
   id: string;
   image: string;
-  tagline: string;
+  verticalCode: string;
+  badge: string;
   title: string;
-  description: string;
-  accentColor: string;
-  badgeBorder: string;
-  pulseColor: string;
-  primaryCtaText: string;
-  secondaryCtaText: string;
-  secondaryCtaLink: string;
-  trustHighlights: [string, string, string];
+  highlight: string;
+  stat: string;
+  statLabel: string;
+  link: string;
 }
 
-const SLIDES: HeroSlide[] = [
+const SHOWCASE_SLIDES: ShowcaseSlide[] = [
   {
-    id: "signage",
+    id: "headquarters",
     image: "/office-reception.png",
-    tagline: "COREVILT TECHNOLOGIES • CORPORATE HEADQUARTERS",
-    title: "Intelligence. Infrastructure. Impact.",
-    description:
-      "Bridging heavy electrical engineering, commercial solar EPC, intelligent ELV security, and enterprise digital ecosystems with single-partner turnkey accountability.",
-    accentColor: "text-sky-400",
-    badgeBorder: "border-sky-400/40",
-    pulseColor: "bg-sky-400",
-    primaryCtaText: "Request Technical Proposal",
-    secondaryCtaText: "Explore 10 Verticals",
-    secondaryCtaLink: "#solutions",
-    trustHighlights: [
-      "10 Connected Verticals",
-      "Turnkey EPC Execution",
-      "24/7 SLA Support",
-    ],
+    verticalCode: "EXECUTIVE HEADQUARTERS",
+    badge: "DELHI NCR & BAREILLY",
+    title: "Corevilt Technologies Corporate HQ",
+    highlight: "Single-Partner Turnkey Accountability for Enterprise & Government Projects",
+    stat: "10",
+    statLabel: "Connected Verticals",
+    link: "/about",
   },
   {
     id: "software",
     image: "https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?auto=format&fit=crop&w=1920&q=80",
-    tagline: "SOFTWARE & DIGITAL SYSTEMS • ERP / CRM",
-    title: "Building Digital Products That Work For You",
-    description:
-      "Custom web, mobile apps, enterprise ERP/CRM platforms, cloud microservices, and AI workflow automation engineered around your actual business operations.",
-    accentColor: "text-sky-400",
-    badgeBorder: "border-sky-400/50",
-    pulseColor: "bg-sky-400",
-    primaryCtaText: "Request Software Proposal",
-    secondaryCtaText: "Explore Software Solutions",
-    secondaryCtaLink: "/solutions/software-digital",
-    trustHighlights: [
-      "Full-Stack Web & Mobile",
-      "Enterprise ERP & CRM",
-      "Secure Cloud Architecture",
-    ],
+    verticalCode: "VERTICAL 01",
+    badge: "SOFTWARE & DIGITAL SYSTEMS",
+    title: "Custom Enterprise Software & ERP/CRM",
+    highlight: "Full-Stack Web, Native Mobile Portals, Cloud Microservices & AI Automation",
+    stat: "99.9%",
+    statLabel: "Uptime SLA",
+    link: "/solutions/software-digital",
   },
   {
     id: "energy",
     image: "https://images.pexels.com/photos/9875408/pexels-photo-9875408.jpeg?auto=compress&cs=tinysrgb&w=1920",
-    tagline: "SOLAR EPC, POWER BACKUP & ENERGY CONTINUITY",
-    title: "Sustainable Power For A Brighter Tomorrow",
-    description:
-      "Commercial & Industrial rooftop solar EPC, on-grid/hybrid power plants, industrial online UPS (1.0 PF), and LiFePO4 battery energy storage systems.",
-    accentColor: "text-amber-400",
-    badgeBorder: "border-amber-400/50",
-    pulseColor: "bg-amber-400",
-    primaryCtaText: "Request Solar Assessment",
-    secondaryCtaText: "Explore Solar EPC",
-    secondaryCtaLink: "/solutions/solar-energy",
-    trustHighlights: [
-      "C&I Rooftop Solar EPC",
-      "Tier-1 Mono PERC Panels",
-      "25-Year Performance Warranty",
-    ],
+    verticalCode: "VERTICAL 06",
+    badge: "SOLAR EPC & POWER BACKUP",
+    title: "C&I Rooftop Solar EPC & Storage",
+    highlight: "On-Grid & Hybrid Solar Plants, Industrial Online UPS (1.0 PF) & LiFePO4 BESS",
+    stat: "25-Yr",
+    statLabel: "Performance Warranty",
+    link: "/solutions/solar-energy",
   },
   {
-    id: "secure",
+    id: "security",
     image: "https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1920",
-    tagline: "ELECTRONIC SECURITY & ELV LIFE SAFETY",
-    title: "Protecting What Matters Most",
-    description:
-      "4K AI CCTV surveillance, biometric access control, fire suppression, voice evacuation (PA), and integrated Building Management Systems (BMS).",
-    accentColor: "text-emerald-400",
-    badgeBorder: "border-emerald-400/50",
-    pulseColor: "bg-emerald-400",
-    primaryCtaText: "Request Security Audit",
-    secondaryCtaText: "Explore ELV Systems",
-    secondaryCtaLink: "/solutions/elv-security",
-    trustHighlights: [
-      "AI Video Surveillance",
-      "Biometric Access & Turnstiles",
-      "Integrated BMS Control",
-    ],
+    verticalCode: "VERTICAL 05",
+    badge: "ELV SECURITY & LIFE SAFETY",
+    title: "4K AI CCTV & Integrated BMS Systems",
+    highlight: "Biometric Access Gates, NFPA Addressable Fire Alarms & Central Command Walls",
+    stat: "< 1s",
+    statLabel: "Event Alert Latency",
+    link: "/solutions/elv-security",
   },
   {
-    id: "infra",
+    id: "infrastructure",
     image: "https://images.pexels.com/photos/4508751/pexels-photo-4508751.jpeg?auto=compress&cs=tinysrgb&w=1920",
-    tagline: "IT INFRASTRUCTURE & SMART SYSTEMS",
-    title: "Infrastructure Engineered For Scale",
-    description:
-      "Mission-critical server rooms, command & control centers, 40G fiber backbones, enterprise virtualization, and Next-Gen UTM firewalls.",
-    accentColor: "text-cyan-400",
-    badgeBorder: "border-cyan-400/50",
-    pulseColor: "bg-cyan-400",
-    primaryCtaText: "Request Infrastructure Audit",
-    secondaryCtaText: "Explore IT Infrastructure",
-    secondaryCtaLink: "/solutions/it-infrastructure",
-    trustHighlights: [
-      "Structured Cat6A/Fiber Cabling",
-      "Server Virtualization",
-      "Command & Control NOC/SOC",
-    ],
+    verticalCode: "VERTICAL 02",
+    badge: "IT INFRASTRUCTURE & SERVERS",
+    title: "Mission-Critical Server Virtualization",
+    highlight: "High-Density Fiber Backbones, Hyper-Converged Clusters & Next-Gen UTM Firewalls",
+    stat: "40G",
+    statLabel: "Fiber Backbone Speed",
+    link: "/solutions/it-infrastructure",
   },
+];
+
+const CAPABILITY_PILLS = [
+  "High-Voltage Electrical Turnkey",
+  "Commercial Solar EPC & Power Backup",
+  "Custom Enterprise Software & ERP",
+  "Command & Control ELV Security",
+  "Mission-Critical IT Infrastructure",
 ];
 
 export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeCapabilityIndex, setActiveCapabilityIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const slideTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
-  };
-
+  // Auto-advance showcase slides every 5.5s
   useEffect(() => {
     if (isPaused) return;
 
     slideTimerRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+      setCurrentSlide((prev) => (prev + 1) % SHOWCASE_SLIDES.length);
+      setActiveCapabilityIndex((prev) => (prev + 1) % CAPABILITY_PILLS.length);
     }, 5500);
 
     return () => {
@@ -141,152 +113,208 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
     };
   }, [isPaused]);
 
-  const slide = SLIDES[currentSlide];
+  const slide = SHOWCASE_SLIDES[currentSlide];
 
   return (
     <>
       {/* ============================================================== */}
-      {/* 1. CINEMATIC FULL-BLEED SLIDER (100% Above-the-Fold Viewport)  */}
-      {/* Height is precisely locked so entire hero fits without scroll  */}
+      {/* 1. MASTER CDO SPLIT-SCREEN AUTHORITY HERO                     */}
+      {/* Locked height: 100% fits on screen above fold with zero scroll */}
+      {/* Deep Obsidian Navy background: 100% razor-sharp typography     */}
+      {/* Right column showcase: 100% vivid, un-obscured photography    */}
       {/* ============================================================== */}
       <section
         id="top"
-        className="relative h-[calc(100vh-140px)] min-h-[560px] max-h-[740px] w-full overflow-hidden bg-slate-950 group select-none flex items-center"
+        className="relative w-full min-h-[580px] lg:h-[calc(100vh-130px)] lg:max-h-[760px] bg-[#0A192F] text-white overflow-hidden flex items-center border-b border-slate-800"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
-        aria-label="Corevilt Capabilities Hero Carousel"
+        aria-label="Corevilt Enterprise Authority Hero"
       >
-        {SLIDES.map((s, index) => {
-          const isActive = index === currentSlide;
-          return (
-            <div
-              key={s.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
-              }`}
-            >
-              {/* Background Slide Image: Full bleed, high resolution */}
-              <img
-                src={s.image}
-                alt={s.title}
-                className="absolute inset-0 h-full w-full object-cover object-center filter contrast-[1.04] transform transition-transform duration-[7000ms] ease-out scale-100 group-hover:scale-105"
-              />
+        {/* Subtle geometric grid ambient background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
+        {/* Radial glow accents */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0B66C3]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#0284C7]/10 rounded-full blur-3xl pointer-events-none" />
 
-              {/* Master Directional Contrast Scrim:
-                  Left 45% has 80%-95% contrast backing under text.
-                  Right 55% dissolves to 0% so background picture is 100% visible & vivid. */}
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 via-45% to-transparent" />
-              {/* Subtle top/bottom vignettes for navigation bar & indicator dots */}
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
-              <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-950/50 to-transparent" />
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 w-full py-8 lg:py-0 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* ========================================================== */}
+            {/* LEFT COLUMN (55% width): Authoritative Display Typography  */}
+            {/* ========================================================== */}
+            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+              {/* Eyebrow Badge with Pulse */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/40 shadow-lg">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[11px] sm:text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase">
+                  ONE COORDINATED PARTNER • TEN CONNECTED VERTICALS
+                </span>
+              </div>
 
-              {/* Left-Aligned High-Contrast Text Composition */}
-              <div className="absolute inset-0 flex items-center">
-                <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
-                  <div className="max-w-2xl lg:max-w-3xl space-y-4 sm:space-y-5 animate-in fade-in duration-500">
-                    {/* Eyebrow Badge inside Translucent Capsule */}
-                    <div
-                      className={`inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border ${s.badgeBorder} shadow-lg`}
-                    >
-                      <span className={`w-2 h-2 rounded-full ${s.pulseColor} animate-ping`} />
-                      <span
-                        className={`text-xs font-mono font-bold tracking-widest uppercase ${s.accentColor}`}
-                      >
-                        {s.tagline}
-                      </span>
-                    </div>
+              {/* H1 Display Headline */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] font-black text-white leading-[1.08] tracking-tight">
+                Architecting Intelligent Infrastructure, Power Continuity &{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#60A5FA] to-[#0B66C3]">
+                  Enterprise Digital Systems.
+                </span>
+              </h1>
 
-                    {/* Bold Display Headline with Razor-Sharp Drop Shadow */}
-                    <h1 className="text-3xl sm:text-5xl lg:text-[52px] font-black text-white leading-[1.08] tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
-                      {s.title}
-                    </h1>
+              {/* Dynamic Capability Cycler Pill */}
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-300">
+                <span className="text-slate-400">Core Expertise:</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-lg bg-blue-950/80 border border-blue-500/30 text-sky-300 font-mono text-xs transition-all duration-300">
+                  {CAPABILITY_PILLS[activeCapabilityIndex]}
+                </span>
+              </div>
 
-                    {/* Crisp Subtitle */}
-                    <p className="text-slate-100 text-base sm:text-lg lg:text-xl font-medium leading-relaxed max-w-xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-                      {s.description}
-                    </p>
+              {/* Value Subtitle */}
+              <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-normal">
+                Bridging physical electrical engineering, commercial solar EPC, and enterprise cloud software.
+                Corevilt eliminates multi-contractor friction with single-source turnkey accountability.
+              </p>
 
-                    {/* Action CTAs */}
-                    <div className="flex flex-wrap items-center gap-4 pt-1">
-                      <a
-                        href="#solutions"
-                        className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#0B66C3] hover:bg-[#09529e] text-white font-bold text-sm shadow-xl shadow-black/60 hover:scale-105 transition-all duration-200"
-                      >
-                        <span>Our Solutions</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
+              {/* Dual Action CTAs */}
+              <div className="flex flex-wrap items-center gap-3.5 pt-1">
+                <button
+                  onClick={() => {
+                    if (onOpenRfp) onOpenRfp();
+                    else {
+                      const el = document.getElementById("rfp-generator");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                      else window.location.href = "/contact#rfp-form";
+                    }
+                  }}
+                  className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-xl bg-[#0B66C3] hover:bg-[#09529e] text-white font-bold text-sm shadow-xl shadow-blue-900/40 hover:scale-105 transition-all duration-200"
+                >
+                  <span>Request Technical Proposal</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
 
-                      <button
-                        onClick={() => {
-                          if (onOpenRfp) onOpenRfp();
-                          else {
-                            const el = document.getElementById("rfp-generator");
-                            if (el) el.scrollIntoView({ behavior: "smooth" });
-                            else window.location.href = "/contact#rfp-form";
-                          }
-                        }}
-                        className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-sm shadow-xl shadow-black/40 hover:scale-105 transition-all duration-200"
-                      >
-                        <span>Partner With Us</span>
-                      </button>
-                    </div>
+                <a
+                  href="#solutions"
+                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-bold text-sm shadow-lg hover:scale-105 transition-all duration-200"
+                >
+                  <span>Explore 10 Verticals</span>
+                </a>
+              </div>
 
-                    {/* Trust Highlights Strip directly below CTAs (Eliminates dead space) */}
-                    <div className="pt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm font-semibold text-slate-300">
-                      {s.trustHighlights.map((highlight, hIdx) => (
-                        <div key={hIdx} className="inline-flex items-center gap-1.5">
-                          <CheckCircle2 className={`w-4 h-4 ${s.accentColor}`} />
-                          <span>{highlight}</span>
-                        </div>
-                      ))}
-                    </div>
+              {/* Trust Metric Strip */}
+              <div className="pt-2 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                {[
+                  { label: "10 Verticals", desc: "Turnkey Integrated" },
+                  { label: "CEA & CPRI", desc: "Statutory Standards" },
+                  { label: "Tier-1 OEMs", desc: "Authorized Alliances" },
+                  { label: "24/7 SLA", desc: "Emergency AMC Support" },
+                ].map((m, idx) => (
+                  <div key={idx} className="space-y-0.5">
+                    <div className="font-bold text-white text-xs sm:text-sm">{m.label}</div>
+                    <div className="text-[11px] text-slate-400">{m.desc}</div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
-          );
-        })}
 
-        {/* Left Circular Arrow */}
-        <button
-          onClick={prevSlide}
-          aria-label="Previous slide"
-          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-slate-950/60 hover:bg-[#0B66C3] backdrop-blur border border-white/30 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-2xl hover:scale-110"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
+            {/* ========================================================== */}
+            {/* RIGHT COLUMN (45% width): 100% Vivid Visual Showcase       */}
+            {/* No text over images! The photo is 100% clear & bright!     */}
+            {/* ========================================================== */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900 shadow-2xl group/showcase aspect-[4/3] sm:aspect-[16/11]">
+                {SHOWCASE_SLIDES.map((s, index) => {
+                  const isActive = index === currentSlide;
+                  return (
+                    <div
+                      key={s.id}
+                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                        isActive ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
+                      }`}
+                    >
+                      {/* Authentic, 100% full-brightness, vivid photograph */}
+                      <img
+                        src={s.image}
+                        alt={s.title}
+                        className="h-full w-full object-cover object-center transform transition-transform duration-[6000ms] ease-out scale-100 group-hover/showcase:scale-105"
+                      />
 
-        {/* Right Circular Arrow */}
-        <button
-          onClick={nextSlide}
-          aria-label="Next slide"
-          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-slate-950/60 hover:bg-[#0B66C3] backdrop-blur border border-white/30 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-2xl hover:scale-110"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
+                      {/* Clean bottom information badge (does not obstruct main subject) */}
+                      <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent flex items-end justify-between gap-4">
+                        <div className="space-y-1">
+                          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-blue-500/20 border border-blue-400/40 text-[10px] font-mono font-bold text-sky-300 uppercase">
+                            {s.verticalCode} • {s.badge}
+                          </div>
+                          <div className="text-white font-bold text-sm sm:text-base leading-tight">
+                            {s.title}
+                          </div>
+                          <div className="text-slate-300 text-xs hidden sm:block">
+                            {s.highlight}
+                          </div>
+                        </div>
 
-        {/* Bottom Pill Indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center space-x-2">
-          {SLIDES.map((s, index) => {
-            const isActive = index === currentSlide;
-            return (
-              <button
-                key={s.id}
-                onClick={() => setCurrentSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  isActive ? "bg-white w-8 shadow-lg" : "bg-white/40 hover:bg-white/70 w-2.5"
-                }`}
-              />
-            );
-          })}
+                        {/* Live stat pill */}
+                        <div className="text-right shrink-0 bg-slate-900/90 backdrop-blur border border-slate-700 px-3 py-1.5 rounded-lg shadow-lg">
+                          <div className="text-sm sm:text-base font-black text-emerald-400 font-mono">
+                            {s.stat}
+                          </div>
+                          <div className="text-[10px] text-slate-400 font-medium">
+                            {s.statLabel}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* Slider Nav Arrows */}
+                <button
+                  onClick={() =>
+                    setCurrentSlide(
+                      (prev) => (prev - 1 + SHOWCASE_SLIDES.length) % SHOWCASE_SLIDES.length
+                    )
+                  }
+                  aria-label="Previous showcase vertical"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-slate-950/70 hover:bg-[#0B66C3] border border-white/20 text-white flex items-center justify-center transition shadow-lg"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={() =>
+                    setCurrentSlide((prev) => (prev + 1) % SHOWCASE_SLIDES.length)
+                  }
+                  aria-label="Next showcase vertical"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-slate-950/70 hover:bg-[#0B66C3] border border-white/20 text-white flex items-center justify-center transition shadow-lg"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Thumbnail Quick Selector below the visual frame */}
+              <div className="flex items-center justify-between gap-2 mt-3">
+                {SHOWCASE_SLIDES.map((s, index) => {
+                  const isActive = index === currentSlide;
+                  return (
+                    <button
+                      key={s.id}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`flex-1 py-1.5 px-1 rounded-md text-[10px] font-mono font-bold transition-all text-center truncate ${
+                        isActive
+                          ? "bg-[#0B66C3] text-white shadow"
+                          : "bg-slate-900/80 hover:bg-slate-800 text-slate-400 border border-slate-800"
+                      }`}
+                    >
+                      {s.id === "headquarters" ? "HQ" : s.id.toUpperCase()}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ============================================================== */}
-      {/* 2. CORPORATE CORE VALUES STRIP (Matching corevilt.com)        */}
+      {/* 2. CORPORATE CORE VALUES STRIP (People | Tech | Green | Impact) */}
       {/* ============================================================== */}
-      <section className="py-10 bg-white border-b border-slate-200">
+      <section className="py-8 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             {
@@ -312,10 +340,10 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="group p-4 border-r last:border-0 border-slate-200 cursor-default"
+              className="group p-3 border-r last:border-0 border-slate-200 cursor-default"
             >
               <div
-                className={`text-xl font-black text-slate-900 tracking-tight transition-colors duration-300 ${item.color}`}
+                className={`text-lg sm:text-xl font-black text-slate-900 tracking-tight transition-colors duration-300 ${item.color}`}
               >
                 {item.title}
               </div>
