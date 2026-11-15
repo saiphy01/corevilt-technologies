@@ -53,7 +53,7 @@ export default function AboutPage() {
     },
     {
       title: "Industrial & Government Readiness",
-      desc: "With formal MSME registration, ISO 9001:2015 certification, GeM compliance, and central engineering hubs in Delhi NCR and Bareilly, our teams are structured to execute government tenders and corporate turnkey overhauls seamlessly.",
+      desc: "With ISO 9001:2015 certification, GeM compliance, and central engineering hubs in Delhi NCR and Bareilly, our teams are structured to execute government tenders and corporate turnkey overhauls seamlessly.",
     },
     {
       title: "Lifecycle Support Beyond Handover",
@@ -183,21 +183,17 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
-            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
+            <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
               <div className="text-slate-400 text-[10px]">CORPORATE ID (CIN)</div>
               <div className="font-bold text-slate-800 mt-0.5">{COMPANY_INFO.registration.cin}</div>
             </div>
-            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
-              <div className="text-slate-400 text-[10px]">GSTIN</div>
-              <div className="font-bold text-slate-800 mt-0.5">{COMPANY_INFO.registration.gstin}</div>
+            <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
+              <div className="text-slate-400 text-[10px]">QUALITY & STATUTORY AUDIT</div>
+              <div className="font-bold text-slate-800 mt-0.5">{COMPANY_INFO.registration.iso}</div>
             </div>
-            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
-              <div className="text-slate-400 text-[10px]">MSME REGISTRATION</div>
-              <div className="font-bold text-slate-800 mt-0.5">{COMPANY_INFO.registration.msme}</div>
-            </div>
-            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
-              <div className="text-slate-400 text-[10px]">EMERGENCY HOTLINE</div>
+            <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
+              <div className="text-slate-400 text-[10px]">EMERGENCY HOTLINE / DISPATCH</div>
               <div className="font-bold text-[#0B66C3] mt-0.5">{COMPANY_INFO.phone}</div>
             </div>
           </div>

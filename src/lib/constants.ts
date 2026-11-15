@@ -43,8 +43,6 @@ export const COMPANY_INFO = {
   },
   registration: {
     cin: "U72900DL2023PTC414890",
-    gstin: "07AAJCC8901L1Z4",
-    msme: "UDYAM-DL-08-0098412",
     iso: "ISO 9001:2015 & ISO 27001 Certified",
   },
 };
@@ -350,7 +348,7 @@ export const CORE_VERTICALS: Vertical[] = [
       "Manufacturer Authorization Forms (MAF) & Genuine Proof of Origin",
       "Pre-Shipment Inspection (PSI) Reports & Serial Number Ledgers",
       "Direct OEM Enterprise Warranty Registration & SLA Support Access",
-      "GST-Compliant Consolidated Commercial Invoices & E-Way Bills",
+      "Statutory Compliant Consolidated Commercial Invoices & E-Way Bills",
       "Safe Delivery Verification & Unboxing Inspection Sign-offs",
     ],
     specMetrics: [
