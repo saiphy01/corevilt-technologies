@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #0B66C3;
+  --color-brand-blue-hover: #09529e;
+  --color-brand-blue-dark: #08488a;
+  --color-brand-blue-light: #eff6ff;
+  --color-navy-deep: #0A192F;
+  --color-navy-surface: #0F172A;
+  --color-navy-card: #13233c;
+  --color-navy-border: #1e2e46;
+  --color-tech-cyan: #0284C7;
+  --color-tech-cyan-glow: #38bdf8;
+  --color-tech-cyan-light: #f0f9ff;
+  --color-eco-emerald: #059669;
+  --color-eco-emerald-glow: #10b981;
+  --color-eco-emerald-light: #ecfdf5;
+  --color-slate-bg: #F8FAFC;
+  --color-slate-card: #ffffff;
+  --color-slate-border: #CBD5E1;
+  --color-slate-border-light: #e2e8f0;
+  --color-slate-text: #334155;
+  --color-slate-muted: #64748b;
+  --color-slate-heading: #0F172A;
+
+  --font-heading: var(--font-jakarta), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+}
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #334155;
+}
+
+* {
+  border-color: #CBD5E1;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  color: #0F172A;
+}
+
+.font-mono-spec {
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+/* Subtle enterprise scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A192F;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2e46;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0B66C3;
+}
+
+/* High-authority subtle grid background */
+.engineering-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(11, 102, 195, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 102, 195, 0.05) 1px, transparent 1px);
+}
+
+.engineering-grid-dark {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
