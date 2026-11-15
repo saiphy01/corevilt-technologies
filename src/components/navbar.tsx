@@ -28,6 +28,7 @@ import { CORE_VERTICALS, COMPANY_INFO } from "@/lib/constants";
 export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [govMenuOpen, setGovMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -42,6 +43,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
   // Close menus on route change
   useEffect(() => {
     setMegaMenuOpen(false);
+    setGovMenuOpen(false);
     setMobileMenuOpen(false);
   }, [pathname]);
 
@@ -261,6 +263,82 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
               Projects
             </Link>
 
+            {/* Governance Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setGovMenuOpen(true)}
+              onMouseLeave={() => setGovMenuOpen(false)}
+            >
+              <button
+                className={`flex items-center gap-1 px-3 py-2 rounded-lg transition-colors ${
+                  ["/quality-policy", "/hse-policy", "/infosec-policy", "/sustainability", "/vendor-portal", "/careers", "/amc-sla"].includes(pathname)
+                    ? "text-[#0B66C3] bg-blue-50/60"
+                    : "hover:text-[#0B66C3] hover:bg-slate-50"
+                }`}
+              >
+                <span>Governance</span>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    govMenuOpen ? "rotate-180 text-[#0B66C3]" : "text-slate-400"
+                  }`}
+                />
+              </button>
+
+              {govMenuOpen && (
+                <div className="absolute top-full -left-20 w-72 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold px-3 py-1.5 border-b border-slate-100 mb-1">
+                    Compliance & Standards
+                  </div>
+                  <div className="space-y-0.5">
+                    <Link
+                      href="/quality-policy"
+                      className="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#0B66C3] hover:bg-slate-50 transition"
+                    >
+                      Quality Assurance (ISO 9001)
+                    </Link>
+                    <Link
+                      href="/hse-policy"
+                      className="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#0B66C3] hover:bg-slate-50 transition"
+                    >
+                      HSE & Electrical Safety
+                    </Link>
+                    <Link
+                      href="/infosec-policy"
+                      className="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#0B66C3] hover:bg-slate-50 transition"
+                    >
+                      Information Security (ISO 27001)
+                    </Link>
+                    <Link
+                      href="/sustainability"
+                      className="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#059669] hover:bg-slate-50 transition"
+                    >
+                      Sustainability & Clean Energy
+                    </Link>
+                    <Link
+                      href="/vendor-portal"
+                      className="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#0B66C3] hover:bg-slate-50 transition"
+                    >
+                      OEM & Vendor Ecosystem
+                    </Link>
+                    <Link
+                      href="/amc-sla"
+                      className="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#0B66C3] hover:bg-slate-50 transition"
+                    >
+                      24/7 SLA Matrix & AMC Tiers
+                    </Link>
+                    <div className="border-t border-slate-100 my-1 pt-1">
+                      <Link
+                        href="/careers"
+                        className="block px-3 py-2 rounded-lg text-xs font-bold text-[#0B66C3] hover:bg-blue-50/60 transition"
+                      >
+                        Careers & Engineering Openings
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link
               href="/contact"
               className={`px-3 py-2 rounded-lg transition-colors ${
@@ -360,6 +438,58 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
             >
               Case Studies & Proof
             </Link>
+
+            {/* Mobile Governance & Policy Links */}
+            <div className="pt-2">
+              <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold py-1">
+                Governance & Standards
+              </div>
+              <div className="pl-3 py-1 space-y-1.5 border-l-2 border-slate-200 my-1">
+                <Link
+                  href="/quality-policy"
+                  className="block text-xs text-slate-600 hover:text-[#0B66C3]"
+                >
+                  Quality Assurance (ISO 9001)
+                </Link>
+                <Link
+                  href="/hse-policy"
+                  className="block text-xs text-slate-600 hover:text-[#0B66C3]"
+                >
+                  HSE & Electrical Safety
+                </Link>
+                <Link
+                  href="/infosec-policy"
+                  className="block text-xs text-slate-600 hover:text-[#0B66C3]"
+                >
+                  InfoSec & Cyber Code (ISO 27001)
+                </Link>
+                <Link
+                  href="/sustainability"
+                  className="block text-xs text-slate-600 hover:text-[#059669]"
+                >
+                  Sustainability & Clean Energy
+                </Link>
+                <Link
+                  href="/vendor-portal"
+                  className="block text-xs text-slate-600 hover:text-[#0B66C3]"
+                >
+                  Vendor / OEM Portal
+                </Link>
+                <Link
+                  href="/amc-sla"
+                  className="block text-xs text-slate-600 hover:text-[#0B66C3]"
+                >
+                  24/7 AMC SLA Tiers
+                </Link>
+                <Link
+                  href="/careers"
+                  className="block text-xs text-[#0B66C3] font-semibold"
+                >
+                  Engineering Careers
+                </Link>
+              </div>
+            </div>
+
             <Link
               href="/contact"
               className="block py-2 text-sm font-bold text-slate-900 hover:text-[#0B66C3]"
