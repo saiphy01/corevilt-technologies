@@ -118,7 +118,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
       {/* ============================================================== */}
       <section
         id="top"
-        className="relative w-full min-h-[calc(100vh-118px)] md:h-[calc(100vh-118px)] md:min-h-[660px] md:max-h-[960px] bg-[#F8FAFC] text-slate-900 overflow-hidden flex flex-col justify-between border-b border-slate-200/80"
+        className="relative w-full min-h-[580px] md:h-[calc(100vh-145px)] md:max-h-[820px] bg-[#F8FAFC] text-slate-900 overflow-hidden flex flex-col justify-between border-b border-slate-200/80"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         aria-label="Corevilt Enterprise Authority Hero"
@@ -134,10 +134,10 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
           {/* ========================================================== */}
           {/* LEFT COLUMN (54% width): High-Authority Typography         */}
           {/* ========================================================== */}
-          <div className="w-full md:w-[54%] xl:w-[55%] flex flex-col justify-between px-6 sm:px-10 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] lg:pr-10 xl:pr-14 py-8 lg:py-12">
-            <div className="space-y-4 lg:space-y-6 my-auto">
+          <div className="w-full md:w-[54%] xl:w-[55%] flex flex-col justify-between px-6 sm:px-10 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] lg:pr-8 xl:pr-12 py-5 sm:py-6 lg:py-7">
+            <div className="space-y-3 sm:space-y-4 my-auto">
               {/* Eyebrow Badge with Pulse Indicator */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#0B66C3] animate-ping" />
                 <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-[#0B66C3] uppercase">
                   ONE COORDINATED PARTNER • TEN CONNECTED VERTICALS
@@ -145,7 +145,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
               </div>
 
               {/* H1 Display Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-black text-slate-900 leading-[1.12] tracking-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] font-black text-slate-900 leading-[1.14] tracking-tight">
                 Architecting Intelligent Infrastructure, Power Continuity &{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B66C3] via-[#0284C7] to-[#059669]">
                   Enterprise Digital Systems.
@@ -154,21 +154,21 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
 
               {/* Dynamic Capability Cycler Pill */}
               <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600">
-                <span className="text-slate-500 font-medium">Core Expertise:</span>
-                <span className="inline-flex items-center px-3 py-1 rounded-lg bg-white border border-slate-300 text-[#0B66C3] font-mono text-xs sm:text-sm shadow-sm transition-all duration-300">
-                  <Sparkles className="w-3.5 h-3.5 mr-2 text-blue-500 inline" />
+                <span className="text-slate-500 font-medium text-xs">Core Expertise:</span>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-lg bg-white border border-slate-300 text-[#0B66C3] font-mono text-xs shadow-sm transition-all duration-300">
+                  <Sparkles className="w-3 h-3 mr-1.5 text-blue-500 inline" />
                   {CAPABILITY_PILLS[activeCapabilityIndex]}
                 </span>
               </div>
 
               {/* Value Subtitle */}
-              <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-normal">
+              <p className="text-slate-600 text-xs sm:text-sm lg:text-base leading-relaxed max-w-xl font-normal">
                 Bridging physical electrical engineering, commercial solar EPC, and enterprise cloud software.
                 Corevilt eliminates multi-contractor friction with single-source turnkey accountability.
               </p>
 
               {/* Dual Action CTAs */}
-              <div className="flex flex-wrap items-center gap-3 pt-1">
+              <div className="flex flex-wrap items-center gap-3 pt-0.5">
                 <button
                   onClick={() => {
                     if (onOpenRfp) onOpenRfp();
@@ -178,7 +178,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                       else window.location.href = "/contact#rfp-form";
                     }
                   }}
-                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-xl bg-[#0B66C3] hover:bg-[#09529e] text-white font-bold text-sm sm:text-base shadow-md shadow-blue-600/25 hover:scale-105 transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-[#0B66C3] hover:bg-[#09529e] text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-600/25 hover:scale-105 transition-all duration-200"
                 >
                   <span>Request Technical Proposal</span>
                   <ArrowRight className="w-4 h-4" />
@@ -186,7 +186,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
 
                 <a
                   href="#solutions"
-                  className="inline-flex items-center gap-1.5 px-6 sm:px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold text-sm sm:text-base shadow-sm hover:scale-105 transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 px-5 sm:px-6 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold text-xs sm:text-sm shadow-sm hover:scale-105 transition-all duration-200"
                 >
                   <span>Explore 10 Verticals</span>
                 </a>
@@ -194,7 +194,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
             </div>
 
             {/* Trust Metric Strip */}
-            <div className="pt-4 lg:pt-6 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+            <div className="pt-3 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
               {[
                 { label: "10 Verticals", desc: "Turnkey Integrated" },
                 { label: "CEA & CPRI", desc: "Statutory Standards" },
@@ -203,7 +203,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
               ].map((m, idx) => (
                 <div key={idx} className="space-y-0.5">
                   <div className="font-bold text-slate-900 text-xs sm:text-sm">{m.label}</div>
-                  <div className="text-[11px] text-slate-500 font-medium leading-tight">{m.desc}</div>
+                  <div className="text-[10px] text-slate-500 font-medium leading-tight">{m.desc}</div>
                 </div>
               ))}
             </div>
@@ -212,7 +212,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
           {/* ========================================================== */}
           {/* RIGHT COLUMN: Covers 100% Canvas Height on Right Side      */}
           {/* ========================================================== */}
-          <div className="w-full md:w-[46%] xl:w-[45%] h-[520px] md:h-full relative overflow-hidden border-t md:border-t-0 md:border-l border-slate-200 bg-slate-950 group/showcase">
+          <div className="w-full md:w-[46%] xl:w-[45%] h-[480px] md:h-full relative overflow-hidden border-t md:border-t-0 md:border-l border-slate-200 bg-slate-950 group/showcase">
             {SHOWCASE_SLIDES.map((s, index) => {
               const isActive = index === currentSlide;
               return (
@@ -230,15 +230,15 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                   />
 
                   {/* Top-floating Category & Telemetry Badges */}
-                  <div className="absolute top-4 sm:top-6 inset-x-4 sm:inset-x-6 flex items-center justify-between pointer-events-none z-20">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-xs font-mono font-bold text-sky-300 uppercase shadow-lg">
+                  <div className="absolute top-3 sm:top-5 inset-x-3 sm:inset-x-5 flex items-center justify-between pointer-events-none z-20">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-xs font-mono font-bold text-sky-300 uppercase shadow-lg">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                       {s.verticalCode} • {s.badge}
                     </div>
 
-                    <div className="bg-slate-950/80 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-xl shadow-lg flex items-center gap-2.5">
+                    <div className="bg-slate-950/80 backdrop-blur-md border border-white/15 px-3 py-1 rounded-xl shadow-lg flex items-center gap-2.5">
                       <div className="text-right">
-                        <div className="text-sm sm:text-base font-black text-emerald-400 font-mono leading-none">
+                        <div className="text-xs sm:text-sm font-black text-emerald-400 font-mono leading-none">
                           {s.stat}
                         </div>
                         <div className="text-[9px] text-slate-300 font-medium">
@@ -249,18 +249,18 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                   </div>
 
                   {/* Bottom Floating Control Dock */}
-                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-8 bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent z-20 space-y-3 sm:space-y-4">
-                    <div className="space-y-1">
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-md leading-tight">
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 lg:p-6 bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent z-20 space-y-2.5 sm:space-y-3">
+                    <div className="space-y-0.5">
+                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white drop-shadow-md leading-tight">
                         {s.title}
                       </h3>
-                      <p className="text-slate-300 text-xs sm:text-sm line-clamp-2 max-w-lg leading-relaxed">
+                      <p className="text-slate-300 text-xs line-clamp-1 max-w-lg leading-relaxed">
                         {s.highlight}
                       </p>
                     </div>
 
                     {/* 5-Pill Quick Select Dock */}
-                    <div className="grid grid-cols-5 gap-1.5 pt-1">
+                    <div className="grid grid-cols-5 gap-1 pt-0.5">
                       {SHOWCASE_SLIDES.map((item, idx) => {
                         const isPillActive = idx === currentSlide;
                         const labels: Record<string, string> = {
@@ -277,7 +277,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                               e.stopPropagation();
                               setCurrentSlide(idx);
                             }}
-                            className={`py-2 px-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold transition-all text-center tracking-tight truncate ${
+                            className={`py-1.5 px-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold transition-all text-center tracking-tight truncate ${
                               isPillActive
                                 ? "bg-[#0B66C3] text-white shadow-lg shadow-blue-500/40 ring-2 ring-blue-400/50"
                                 : "bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-white/10 backdrop-blur-md"
@@ -301,9 +301,9 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                 )
               }
               aria-label="Previous showcase vertical"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-30 h-10 w-10 rounded-full bg-slate-900/70 hover:bg-[#0B66C3] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition shadow-xl"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-30 h-9 w-9 rounded-full bg-slate-900/70 hover:bg-[#0B66C3] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition shadow-xl"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4" />
             </button>
 
             <button
@@ -311,9 +311,9 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                 setCurrentSlide((prev) => (prev + 1) % SHOWCASE_SLIDES.length)
               }
               aria-label="Next showcase vertical"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-30 h-10 w-10 rounded-full bg-slate-900/70 hover:bg-[#0B66C3] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition shadow-xl"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-30 h-9 w-9 rounded-full bg-slate-900/70 hover:bg-[#0B66C3] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition shadow-xl"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
