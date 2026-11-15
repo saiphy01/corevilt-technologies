@@ -112,13 +112,13 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
   return (
     <>
       {/* ============================================================== */}
-      {/* 1. ARCHITECTURAL LIGHT-THEMED AUTHORITY HERO (Stripe/Siemens)  */}
-      {/* Side-by-Side Dual Column on all screens (md:grid-cols-12)      */}
-      {/* 100% Fits in Viewport: Zero clipping, zero overflow            */}
+      {/* 1. ARCHITECTURAL LIGHT-THEMED EXECUTIVE SPLIT HERO             */}
+      {/* Full-Height Right Canvas: Visual covers 100% canvas height      */}
+      {/* 100% Fits Above-The-Fold in Viewport with Zero Scrolling       */}
       {/* ============================================================== */}
       <section
         id="top"
-        className="relative w-full min-h-[500px] md:h-[calc(100vh-140px)] md:max-h-[680px] bg-[#F8FAFC] text-slate-900 overflow-hidden flex items-center border-b border-slate-200/80"
+        className="relative w-full min-h-[calc(100vh-118px)] md:h-[calc(100vh-118px)] md:min-h-[660px] md:max-h-[960px] bg-[#F8FAFC] text-slate-900 overflow-hidden flex flex-col justify-between border-b border-slate-200/80"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         aria-label="Corevilt Enterprise Authority Hero"
@@ -127,25 +127,25 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
         <div className="absolute inset-0 bg-[radial-gradient(#CBD5E1_1px,transparent_1px)] [background-size:24px_24px] opacity-70 pointer-events-none" />
 
         {/* Soft radial ambient illumination */}
-        <div className="absolute top-0 right-1/4 w-[450px] h-[450px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-[350px] h-[350px] bg-emerald-100/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-1/3 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-emerald-100/30 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full py-6 md:py-0 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-center">
-            {/* ========================================================== */}
-            {/* LEFT COLUMN (58% width): High-Authority Typography         */}
-            {/* ========================================================== */}
-            <div className="md:col-span-7 xl:col-span-7 space-y-3.5 sm:space-y-4">
+        <div className="w-full h-full flex flex-col md:flex-row relative z-10 flex-1">
+          {/* ========================================================== */}
+          {/* LEFT COLUMN (54% width): High-Authority Typography         */}
+          {/* ========================================================== */}
+          <div className="w-full md:w-[54%] xl:w-[55%] flex flex-col justify-between px-6 sm:px-10 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] lg:pr-10 xl:pr-14 py-8 lg:py-12">
+            <div className="space-y-4 lg:space-y-6 my-auto">
               {/* Eyebrow Badge with Pulse Indicator */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#0B66C3] animate-ping" />
-                <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-widest text-[#0B66C3] uppercase">
+                <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-[#0B66C3] uppercase">
                   ONE COORDINATED PARTNER • TEN CONNECTED VERTICALS
                 </span>
               </div>
 
               {/* H1 Display Headline */}
-              <h1 className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[45px] font-black text-slate-900 leading-[1.1] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-black text-slate-900 leading-[1.12] tracking-tight">
                 Architecting Intelligent Infrastructure, Power Continuity &{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B66C3] via-[#0284C7] to-[#059669]">
                   Enterprise Digital Systems.
@@ -154,21 +154,21 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
 
               {/* Dynamic Capability Cycler Pill */}
               <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600">
-                <span className="text-slate-500 font-medium text-xs">Core Expertise:</span>
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-lg bg-white border border-slate-300 text-[#0B66C3] font-mono text-xs shadow-sm transition-all duration-300">
-                  <Sparkles className="w-3 h-3 mr-1.5 text-blue-500 inline" />
+                <span className="text-slate-500 font-medium">Core Expertise:</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-lg bg-white border border-slate-300 text-[#0B66C3] font-mono text-xs sm:text-sm shadow-sm transition-all duration-300">
+                  <Sparkles className="w-3.5 h-3.5 mr-2 text-blue-500 inline" />
                   {CAPABILITY_PILLS[activeCapabilityIndex]}
                 </span>
               </div>
 
               {/* Value Subtitle */}
-              <p className="text-slate-600 text-xs sm:text-sm lg:text-base leading-relaxed max-w-xl font-normal">
+              <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-normal">
                 Bridging physical electrical engineering, commercial solar EPC, and enterprise cloud software.
                 Corevilt eliminates multi-contractor friction with single-source turnkey accountability.
               </p>
 
               {/* Dual Action CTAs */}
-              <div className="flex flex-wrap items-center gap-3 pt-0.5">
+              <div className="flex flex-wrap items-center gap-3 pt-1">
                 <button
                   onClick={() => {
                     if (onOpenRfp) onOpenRfp();
@@ -178,7 +178,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                       else window.location.href = "/contact#rfp-form";
                     }
                   }}
-                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-[#0B66C3] hover:bg-[#09529e] text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-600/25 hover:scale-105 transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 rounded-xl bg-[#0B66C3] hover:bg-[#09529e] text-white font-bold text-sm sm:text-base shadow-md shadow-blue-600/25 hover:scale-105 transition-all duration-200"
                 >
                   <span>Request Technical Proposal</span>
                   <ArrowRight className="w-4 h-4" />
@@ -186,129 +186,135 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
 
                 <a
                   href="#solutions"
-                  className="inline-flex items-center gap-1.5 px-5 sm:px-6 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold text-xs sm:text-sm shadow-sm hover:scale-105 transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 px-6 sm:px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold text-sm sm:text-base shadow-sm hover:scale-105 transition-all duration-200"
                 >
                   <span>Explore 10 Verticals</span>
                 </a>
               </div>
-
-              {/* Trust Metric Strip */}
-              <div className="pt-2.5 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
-                {[
-                  { label: "10 Verticals", desc: "Turnkey Integrated" },
-                  { label: "CEA & CPRI", desc: "Statutory Standards" },
-                  { label: "Tier-1 OEMs", desc: "Authorized Alliances" },
-                  { label: "24/7 SLA", desc: "Emergency AMC Support" },
-                ].map((m, idx) => (
-                  <div key={idx} className="space-y-0.5">
-                    <div className="font-bold text-slate-900 text-xs">{m.label}</div>
-                    <div className="text-[10px] text-slate-500 font-medium leading-tight">{m.desc}</div>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            {/* ========================================================== */}
-            {/* RIGHT COLUMN (42% width): Perfectly Proportioned Showcase  */}
-            {/* Fits 100% inside the viewport on the right side of hero    */}
-            {/* ========================================================== */}
-            <div className="md:col-span-5 xl:col-span-5 relative w-full">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg shadow-slate-200/80 group/showcase aspect-[16/10] max-h-[360px] w-full">
-                {SHOWCASE_SLIDES.map((s, index) => {
-                  const isActive = index === currentSlide;
-                  return (
-                    <div
-                      key={s.id}
-                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                        isActive ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
-                      }`}
-                    >
-                      {/* Authentic, 100% full-brightness, vivid photograph */}
-                      <img
-                        src={s.image}
-                        alt={s.title}
-                        className="h-full w-full object-cover object-center transform transition-transform duration-[6000ms] ease-out scale-100 group-hover/showcase:scale-105"
-                      />
+            {/* Trust Metric Strip */}
+            <div className="pt-4 lg:pt-6 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              {[
+                { label: "10 Verticals", desc: "Turnkey Integrated" },
+                { label: "CEA & CPRI", desc: "Statutory Standards" },
+                { label: "Tier-1 OEMs", desc: "Authorized Alliances" },
+                { label: "24/7 SLA", desc: "Emergency AMC Support" },
+              ].map((m, idx) => (
+                <div key={idx} className="space-y-0.5">
+                  <div className="font-bold text-slate-900 text-xs sm:text-sm">{m.label}</div>
+                  <div className="text-[11px] text-slate-500 font-medium leading-tight">{m.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-                      {/* Clean bottom information badge (high-contrast frosted glass) */}
-                      <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent flex items-end justify-between gap-3">
-                        <div className="space-y-0.5 min-w-0">
-                          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-blue-500/25 border border-blue-400/50 text-[9px] font-mono font-bold text-sky-300 uppercase">
-                            {s.verticalCode} • {s.badge}
-                          </div>
-                          <div className="text-white font-bold text-xs sm:text-sm leading-tight drop-shadow-md truncate">
-                            {s.title}
-                          </div>
-                          <div className="text-slate-300 text-[11px] hidden sm:block truncate max-w-[220px]">
-                            {s.highlight}
-                          </div>
+          {/* ========================================================== */}
+          {/* RIGHT COLUMN: Covers 100% Canvas Height on Right Side      */}
+          {/* ========================================================== */}
+          <div className="w-full md:w-[46%] xl:w-[45%] h-[520px] md:h-full relative overflow-hidden border-t md:border-t-0 md:border-l border-slate-200 bg-slate-950 group/showcase">
+            {SHOWCASE_SLIDES.map((s, index) => {
+              const isActive = index === currentSlide;
+              return (
+                <div
+                  key={s.id}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    isActive ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
+                  }`}
+                >
+                  {/* Full canvas height authentic photograph */}
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    className="h-full w-full object-cover object-center transform transition-transform duration-[6000ms] ease-out scale-100 group-hover/showcase:scale-105"
+                  />
+
+                  {/* Top-floating Category & Telemetry Badges */}
+                  <div className="absolute top-4 sm:top-6 inset-x-4 sm:inset-x-6 flex items-center justify-between pointer-events-none z-20">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/75 backdrop-blur-md border border-white/15 text-[10px] sm:text-xs font-mono font-bold text-sky-300 uppercase shadow-lg">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      {s.verticalCode} • {s.badge}
+                    </div>
+
+                    <div className="bg-slate-950/80 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-xl shadow-lg flex items-center gap-2.5">
+                      <div className="text-right">
+                        <div className="text-sm sm:text-base font-black text-emerald-400 font-mono leading-none">
+                          {s.stat}
                         </div>
-
-                        {/* Live stat pill */}
-                        <div className="text-right shrink-0 bg-slate-900/90 backdrop-blur border border-slate-700 px-2.5 py-1 rounded-lg shadow-md">
-                          <div className="text-xs sm:text-sm font-black text-emerald-400 font-mono">
-                            {s.stat}
-                          </div>
-                          <div className="text-[9px] text-slate-400 font-medium">
-                            {s.statLabel}
-                          </div>
+                        <div className="text-[9px] text-slate-300 font-medium">
+                          {s.statLabel}
                         </div>
                       </div>
                     </div>
-                  );
-                })}
+                  </div>
 
-                {/* Slider Nav Arrows */}
-                <button
-                  onClick={() =>
-                    setCurrentSlide(
-                      (prev) => (prev - 1 + SHOWCASE_SLIDES.length) % SHOWCASE_SLIDES.length
-                    )
-                  }
-                  aria-label="Previous showcase vertical"
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 h-8 w-8 rounded-full bg-white/90 hover:bg-[#0B66C3] hover:text-white border border-slate-200 text-slate-800 flex items-center justify-center transition shadow-md"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
+                  {/* Bottom Floating Control Dock */}
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-8 bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent z-20 space-y-3 sm:space-y-4">
+                    <div className="space-y-1">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-md leading-tight">
+                        {s.title}
+                      </h3>
+                      <p className="text-slate-300 text-xs sm:text-sm line-clamp-2 max-w-lg leading-relaxed">
+                        {s.highlight}
+                      </p>
+                    </div>
 
-                <button
-                  onClick={() =>
-                    setCurrentSlide((prev) => (prev + 1) % SHOWCASE_SLIDES.length)
-                  }
-                  aria-label="Next showcase vertical"
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 h-8 w-8 rounded-full bg-white/90 hover:bg-[#0B66C3] hover:text-white border border-slate-200 text-slate-800 flex items-center justify-center transition shadow-md"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
+                    {/* 5-Pill Quick Select Dock */}
+                    <div className="grid grid-cols-5 gap-1.5 pt-1">
+                      {SHOWCASE_SLIDES.map((item, idx) => {
+                        const isPillActive = idx === currentSlide;
+                        const labels: Record<string, string> = {
+                          headquarters: "HQ",
+                          software: "SOFTWARE",
+                          energy: "SOLAR",
+                          security: "SECURITY",
+                          infrastructure: "IT INFRA",
+                        };
+                        return (
+                          <button
+                            key={item.id}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCurrentSlide(idx);
+                            }}
+                            className={`py-2 px-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold transition-all text-center tracking-tight truncate ${
+                              isPillActive
+                                ? "bg-[#0B66C3] text-white shadow-lg shadow-blue-500/40 ring-2 ring-blue-400/50"
+                                : "bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-white/10 backdrop-blur-md"
+                            }`}
+                          >
+                            {labels[item.id] || item.id.toUpperCase()}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
 
-              {/* Quick-Select Tabs below the visual frame */}
-              <div className="grid grid-cols-5 gap-1.5 mt-2.5">
-                {SHOWCASE_SLIDES.map((s, index) => {
-                  const isActive = index === currentSlide;
-                  const labels: Record<string, string> = {
-                    headquarters: "HQ",
-                    software: "SOFTWARE",
-                    energy: "SOLAR",
-                    security: "SECURITY",
-                    infrastructure: "IT INFRA",
-                  };
-                  return (
-                    <button
-                      key={s.id}
-                      onClick={() => setCurrentSlide(index)}
-                      className={`py-1.5 px-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold transition-all text-center tracking-tight truncate ${
-                        isActive
-                          ? "bg-[#0B66C3] text-white shadow-sm ring-2 ring-blue-500/20"
-                          : "bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-sm"
-                      }`}
-                    >
-                      {labels[s.id] || s.id.toUpperCase()}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            {/* Slide Navigation Arrows */}
+            <button
+              onClick={() =>
+                setCurrentSlide(
+                  (prev) => (prev - 1 + SHOWCASE_SLIDES.length) % SHOWCASE_SLIDES.length
+                )
+              }
+              aria-label="Previous showcase vertical"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-30 h-10 w-10 rounded-full bg-slate-900/70 hover:bg-[#0B66C3] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition shadow-xl"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <button
+              onClick={() =>
+                setCurrentSlide((prev) => (prev + 1) % SHOWCASE_SLIDES.length)
+              }
+              aria-label="Next showcase vertical"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-30 h-10 w-10 rounded-full bg-slate-900/70 hover:bg-[#0B66C3] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition shadow-xl"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
