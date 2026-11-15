@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-2">
             <h2 className="text-base font-bold text-slate-900">3. Non-Disclosure & Security Standards</h2>
             <p>
-              We adhere to ISO 27001 data protection principles. Architectural blueprints and network designs are stored on encrypted, role-restricted storage systems and are never licensed, leased, or disclosed to unauthorized third parties.
+              We adhere to enterprise-grade data protection principles. Architectural blueprints and network designs are stored on encrypted, role-restricted storage systems and are never licensed, leased, or disclosed to unauthorized third parties.
             </p>
           </section>
 

@@ -4,9 +4,9 @@ import { ArrowLeft, Award, CheckCircle2, ShieldCheck, FileCheck } from "lucide-r
 import { COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Corporate Quality Policy (ISO 9001:2015) | Corevilt Technologies",
+  title: "Corporate Quality Policy | Corevilt Technologies",
   description:
-    "Corevilt's Institutional Quality Policy, CPRI panel type-testing, Fluke calibration, FAT/SAT inspection standards, and ISO 9001:2015 compliance.",
+    "Corevilt's Institutional Quality Policy, CPRI panel type-testing, Fluke calibration, FAT/SAT inspection standards, and comprehensive quality assurance standards.",
 };
 
 export default function QualityPolicyPage() {
@@ -45,7 +45,7 @@ export default function QualityPolicyPage() {
         <div className="space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-[#059669] text-xs font-mono font-bold">
             <Award className="w-3.5 h-3.5" />
-            <span>ISO 9001:2015 CERTIFIED QMS</span>
+            <span>INSTITUTIONAL QUALITY ASSURANCE</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             Corporate Quality Policy & Standards

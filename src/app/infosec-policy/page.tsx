@@ -6,7 +6,7 @@ import { COMPANY_INFO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Information Security & Cybersecurity Standards | Corevilt",
   description:
-    "Corevilt's ISO 27001 cybersecurity frameworks, Zero-Trust network segmentation, encryption, and CCTV video privacy protocols.",
+    "Corevilt's enterprise cybersecurity frameworks, Zero-Trust network segmentation, encryption, and CCTV video privacy protocols.",
 };
 
 export default function InfosecPolicyPage() {
@@ -45,7 +45,7 @@ export default function InfosecPolicyPage() {
         <div className="space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-[#0B66C3] text-xs font-mono font-bold">
             <Lock className="w-3.5 h-3.5" />
-            <span>ISO 27001 ALIGNED CONTROLS</span>
+            <span>ENTERPRISE CYBERSECURITY CONTROLS</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             Information Security & Cybersecurity Code

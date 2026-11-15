@@ -43,7 +43,6 @@ export const COMPANY_INFO = {
   },
   registration: {
     cin: "U72900DL2023PTC414890",
-    iso: "ISO 9001:2015 & ISO 27001 Certified",
   },
 };
 

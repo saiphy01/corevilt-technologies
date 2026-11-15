@@ -86,10 +86,6 @@ export function Footer() {
           {/* Compliance & Registration Strip */}
           <div className="pt-2 border-t border-slate-800 space-y-1.5 text-[11px] font-mono text-slate-400">
             <div><span className="text-slate-500">CIN:</span> {COMPANY_INFO.registration.cin}</div>
-            <div className="text-[#10b981] flex items-center gap-1 mt-1">
-              <Award className="w-3.5 h-3.5" />
-              <span>{COMPANY_INFO.registration.iso}</span>
-            </div>
           </div>
         </div>
 

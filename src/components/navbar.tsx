@@ -289,7 +289,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
                       href="/quality-policy"
                       className="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#0B66C3] hover:bg-slate-50 transition"
                     >
-                      Quality Assurance (ISO 9001)
+                      Quality Assurance Policy
                     </Link>
                     <Link
                       href="/hse-policy"
@@ -301,7 +301,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
                       href="/infosec-policy"
                       className="block px-3 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#0B66C3] hover:bg-slate-50 transition"
                     >
-                      Information Security (ISO 27001)
+                      Information Security Policy
                     </Link>
                     <Link
                       href="/sustainability"
@@ -444,7 +444,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
                   href="/quality-policy"
                   className="block text-xs text-slate-600 hover:text-[#0B66C3]"
                 >
-                  Quality Assurance (ISO 9001)
+                  Quality Assurance Policy
                 </Link>
                 <Link
                   href="/hse-policy"
@@ -456,7 +456,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
                   href="/infosec-policy"
                   className="block text-xs text-slate-600 hover:text-[#0B66C3]"
                 >
-                  InfoSec & Cyber Code (ISO 27001)
+                  InfoSec & Cyber Code
                 </Link>
                 <Link
                   href="/sustainability"

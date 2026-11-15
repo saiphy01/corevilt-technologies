@@ -53,7 +53,7 @@ export default function AboutPage() {
     },
     {
       title: "Industrial & Government Readiness",
-      desc: "With ISO 9001:2015 certification, GeM compliance, and central engineering hubs in Delhi NCR and Bareilly, our teams are structured to execute government tenders and corporate turnkey overhauls seamlessly.",
+      desc: "With statutory engineering compliance, GeM readiness, and central engineering hubs in Delhi NCR and Bareilly, our teams are structured to execute government tenders and corporate turnkey overhauls seamlessly.",
     },
     {
       title: "Lifecycle Support Beyond Handover",
@@ -178,19 +178,15 @@ export default function AboutPage() {
             </div>
             <div className="flex items-center gap-2">
               <span className="px-3 py-1 rounded-full bg-emerald-50 text-[#059669] text-xs font-mono font-bold border border-emerald-200">
-                {COMPANY_INFO.registration.iso}
+                Statutory Compliant Entity
               </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
             <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
               <div className="text-slate-400 text-[10px]">CORPORATE ID (CIN)</div>
               <div className="font-bold text-slate-800 mt-0.5">{COMPANY_INFO.registration.cin}</div>
-            </div>
-            <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
-              <div className="text-slate-400 text-[10px]">QUALITY & STATUTORY AUDIT</div>
-              <div className="font-bold text-slate-800 mt-0.5">{COMPANY_INFO.registration.iso}</div>
             </div>
             <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200">
               <div className="text-slate-400 text-[10px]">EMERGENCY HOTLINE / DISPATCH</div>
