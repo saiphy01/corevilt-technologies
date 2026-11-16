@@ -27,6 +27,15 @@ const TARIFF_OPTIONS = [
   { label: "Institutional Subsidized (₹6.80 / kWh)", rate: 6.8 },
 ];
 
+function formatIndianCurrency(amount: number): string {
+  if (amount >= 10000000) {
+    return `₹${(amount / 10000000).toFixed(2)} Crores`;
+  } else if (amount >= 100000) {
+    return `₹${(amount / 100000).toFixed(2)} Lakhs`;
+  }
+  return `₹${Math.round(amount).toLocaleString("en-IN")}`;
+}
+
 export function SolarRoiCalculator() {
   const [facilityType, setFacilityType] = useState(FACILITY_TYPES[0]);
   const [monthlyBill, setMonthlyBill] = useState<number>(250000);
@@ -40,7 +49,7 @@ export function SolarRoiCalculator() {
     // 100 sq ft per 1 kWp of mono-PERC bifacial array
     const roofCapacityKwp = Math.floor(roofArea / 100);
 
-    // Grid net-metering limit ~90% of sanctioned load
+    // Grid net-metering limit ~95% of sanctioned load
     const loadConstraintKwp = Math.round(sanctionedLoad * 0.95);
 
     // Bill offset requirement (~85% offset target, ~123.3 kWh/kWp/month yield)
@@ -48,10 +57,11 @@ export function SolarRoiCalculator() {
     const targetMonthlySolarUnits = monthlyUnits * 0.85;
     const billCapacityKwp = Math.round(targetMonthlySolarUnits / 123.3);
 
-    // Recommended capacity bounded by roof space and electrical load
+    // Recommended capacity bounded by physical roof space and electrical load ceiling
+    const ceilingKwp = Math.min(roofCapacityKwp, loadConstraintKwp);
     const recommendedKwp = Math.max(
       10,
-      Math.min(roofCapacityKwp, loadConstraintKwp, Math.max(15, billCapacityKwp))
+      Math.min(ceilingKwp, Math.max(10, billCapacityKwp))
     );
 
     // Turnkey commercial EPC capex benchmark (~₹45,000 / kWp in India)
@@ -64,7 +74,7 @@ export function SolarRoiCalculator() {
     const annualSavings = Math.round(annualGenerationKwh * tariffRate);
 
     // Payback period
-    const paybackYears = annualSavings > 0 ? (capex / annualSavings).toFixed(1) : "0.0";
+    const paybackYears = annualSavings > 0 ? (capex / annualSavings).toFixed(1) : "N/A";
 
     // 25-Year Cumulative Net Financial Benefit
     // Accounting for 0.7% annual solar degradation, 3.0% annual tariff inflation, minus 1% annual AMC
@@ -83,8 +93,9 @@ export function SolarRoiCalculator() {
     const annualCo2Tons = Number(((annualGenerationKwh * 0.82) / 1000).toFixed(1));
     const treesPlanted = Math.round(annualCo2Tons * 45);
 
-    // Space utilization constraint note
+    // Space & Load utilization constraint notes
     const spaceConstrained = roofCapacityKwp < billCapacityKwp;
+    const loadConstrained = loadConstraintKwp < billCapacityKwp && loadConstraintKwp < roofCapacityKwp;
 
     return {
       recommendedKwp,
@@ -96,6 +107,7 @@ export function SolarRoiCalculator() {
       annualCo2Tons,
       treesPlanted,
       spaceConstrained,
+      loadConstrained,
       roofCapacityKwp,
       loadConstraintKwp,
     };
@@ -117,13 +129,13 @@ export function SolarRoiCalculator() {
     const scopeText = `EXECUTIVE SOLAR EPC & ENERGY FEASIBILITY PARAMETERS:
 - Facility Type: ${facilityType}
 - Recommended Solar Plant: ${calculations.recommendedKwp} kWp (Rooftop Mono-PERC / Bifacial Array)
-- Estimated Turnkey Capex: ₹${(calculations.capex / 100000).toFixed(2)} Lakhs (Turnkey EPC)
+- Estimated Turnkey Capex: ${formatIndianCurrency(calculations.capex)} (Turnkey EPC)
 - Current Monthly Electricity Bill: ₹${monthlyBill.toLocaleString("en-IN")} (@ ₹${tariffRate}/kWh)
 - Sanctioned Connected Load: ${sanctionedLoad} kW | Usable Roof Area: ${roofArea.toLocaleString("en-IN")} Sq. Ft
 - Projected Annual Solar Generation: ~${calculations.annualGenerationKwh.toLocaleString("en-IN")} kWh / year
-- Projected Annual Tariff Savings: ₹${(calculations.annualSavings / 100000).toFixed(2)} Lakhs / year
+- Projected Annual Tariff Savings: ${formatIndianCurrency(calculations.annualSavings)} / year
 - Estimated Payback Period: ~${calculations.paybackYears} Years
-- Projected 25-Year Cumulative Net Benefit: ₹${(calculations.twentyFiveYearNetBenefit / 10000000).toFixed(2)} Crores
+- Projected 25-Year Cumulative Net Benefit: ${formatIndianCurrency(calculations.twentyFiveYearNetBenefit)}
 - Environmental ESG Metrics: ${calculations.annualCo2Tons} Tons CO2 Reduction / year (~${calculations.treesPlanted} mature trees equivalent)
 
 Please provide detailed engineering proposal, structural roof load audit, single-line diagram (SLD), and DISCOM net-metering intertie feasibility for this scope.`;
@@ -310,6 +322,13 @@ Please provide detailed engineering proposal, structural roof load audit, single
                 <strong>Roof Area Constraint:</strong> Your available roof space ({roofArea.toLocaleString()} sq ft) supports up to {calculations.roofCapacityKwp} kWp. To meet 100% of your energy bill, elevated canopy or ground structures can expand capacity.
               </div>
             )}
+
+            {/* Load Advisory Note */}
+            {calculations.loadConstrained && (
+              <div className="p-3 rounded-xl bg-blue-950/40 border border-blue-500/40 text-xs text-blue-200">
+                <strong>Sanctioned Load Advisory:</strong> DISCOM net-metering guidelines cap installation at ~95% of connected load ({calculations.loadConstraintKwp} kWp). Corevilt manages DISCOM contract load enhancement liaison if higher capacity is required.
+              </div>
+            )}
           </div>
 
           {/* Right Column: Computed Feasibility Outputs (6 cols) */}
@@ -368,7 +387,7 @@ Please provide detailed engineering proposal, structural roof load audit, single
                     Estimated Turnkey Capex
                   </div>
                   <div className="text-xl font-bold font-mono text-white">
-                    ₹{(calculations.capex / 100000).toFixed(2)} Lakhs
+                    {formatIndianCurrency(calculations.capex)}
                   </div>
                   <div className="text-[10px] text-slate-500">
                     Includes structures, net-metering & commissioning.
@@ -380,7 +399,7 @@ Please provide detailed engineering proposal, structural roof load audit, single
                     Annual Tariff Savings
                   </div>
                   <div className="text-xl font-bold font-mono text-[#10b981]">
-                    ₹{(calculations.annualSavings / 100000).toFixed(2)} Lakhs / yr
+                    {formatIndianCurrency(calculations.annualSavings)} / yr
                   </div>
                   <div className="text-[10px] text-slate-500">
                     ~{calculations.annualGenerationKwh.toLocaleString("en-IN")} kWh / yr generated.
@@ -392,7 +411,7 @@ Please provide detailed engineering proposal, structural roof load audit, single
                     25-Year Net Benefit
                   </div>
                   <div className="text-xl font-bold font-mono text-[#38bdf8]">
-                    ₹{(calculations.twentyFiveYearNetBenefit / 10000000).toFixed(2)} Crores
+                    {formatIndianCurrency(calculations.twentyFiveYearNetBenefit)}
                   </div>
                   <div className="text-[10px] text-slate-500">
                     Net cash flow after capex & maintenance reserves.
