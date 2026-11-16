@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, SunMedium, Leaf, Zap, Award, CheckCircle2, TrendingUp } from "lucide-react";
-import { COMPANY_INFO } from "@/lib/constants";
+import { ArrowLeft, SunMedium, Leaf, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sustainability & Corporate Social Responsibility | Corevilt",

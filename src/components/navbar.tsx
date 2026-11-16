@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ChevronDown,
   Menu,
@@ -21,7 +21,6 @@ import {
   SunMedium,
   Wrench,
   Compass,
-  Sparkles,
 } from "lucide-react";
 import { CORE_VERTICALS, COMPANY_INFO } from "@/lib/constants";
 
@@ -31,6 +30,16 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
   const [govMenuOpen, setGovMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Close menus on route change without cascading renders in effect
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMegaMenuOpen(false);
+    setGovMenuOpen(false);
+    setMobileMenuOpen(false);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,13 +48,6 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Close menus on route change
-  useEffect(() => {
-    setMegaMenuOpen(false);
-    setGovMenuOpen(false);
-    setMobileMenuOpen(false);
-  }, [pathname]);
 
   const digitalVerticals = CORE_VERTICALS.filter((v) => v.category === "Digital Systems & AI");
   const electricalVerticals = CORE_VERTICALS.filter((v) => v.category === "Electrical & Power Engineering");
@@ -79,9 +81,12 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
         <div className="flex items-center justify-between h-20">
           {/* Logo & Subtitle */}
           <Link href="/" className="flex items-center gap-3 group">
-            <img
+            <Image
               src="/logo.png"
               alt="COREVILT Technologies"
+              width={210}
+              height={48}
+              priority
               className="h-11 sm:h-12 w-auto max-w-[210px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
             />
             <div className="hidden xl:block border-l border-slate-300 pl-3 py-0.5">
@@ -347,7 +352,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/contact#amc-portal"
+              href="/amc-sla"
               className="text-xs font-semibold px-3.5 py-2.5 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition"
             >
               AMC Support
@@ -357,7 +362,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
               onClick={onOpenRfp ? onOpenRfp : () => {
                 const el = document.getElementById("rfp-generator");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
-                else window.location.href = "/contact#rfp-form";
+                else router.push("/contact#rfp-form");
               }}
               className="inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-lg bg-[#0B66C3] hover:bg-[#09529e] text-white shadow-sm hover:shadow transition-all duration-200 transform hover:-translate-y-0.5"
             >
@@ -385,18 +390,21 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
           <div className="space-y-1 pb-4 border-b border-slate-200">
             <Link
               href="/"
+              onClick={() => setMobileMenuOpen(false)}
               className="block py-2 text-sm font-bold text-slate-900 hover:text-[#0B66C3]"
             >
               Home
             </Link>
             <Link
               href="/about"
+              onClick={() => setMobileMenuOpen(false)}
               className="block py-2 text-sm font-bold text-slate-900 hover:text-[#0B66C3]"
             >
               About Corevilt
             </Link>
             <Link
               href="/solutions"
+              onClick={() => setMobileMenuOpen(false)}
               className="block py-2 text-sm font-bold text-[#0B66C3]"
             >
               All 10 Turnkey Verticals
@@ -408,6 +416,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
                 <Link
                   key={v.id}
                   href={`/solutions/${v.slug}`}
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block text-xs text-slate-600 hover:text-[#0B66C3] py-1"
                 >
                   • {v.title}
@@ -417,18 +426,21 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
 
             <Link
               href="/industries"
+              onClick={() => setMobileMenuOpen(false)}
               className="block py-2 text-sm font-bold text-slate-900 hover:text-[#0B66C3]"
             >
               Industry Blueprints
             </Link>
             <Link
               href="/methodology"
+              onClick={() => setMobileMenuOpen(false)}
               className="block py-2 text-sm font-bold text-slate-900 hover:text-[#0B66C3]"
             >
               8-Phase Delivery Framework
             </Link>
             <Link
               href="/projects"
+              onClick={() => setMobileMenuOpen(false)}
               className="block py-2 text-sm font-bold text-slate-900 hover:text-[#0B66C3]"
             >
               Case Studies & Proof
@@ -442,42 +454,49 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
               <div className="pl-3 py-1 space-y-1.5 border-l-2 border-slate-200 my-1">
                 <Link
                   href="/quality-policy"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block text-xs text-slate-600 hover:text-[#0B66C3]"
                 >
                   Quality Assurance Policy
                 </Link>
                 <Link
                   href="/hse-policy"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block text-xs text-slate-600 hover:text-[#0B66C3]"
                 >
                   HSE & Electrical Safety
                 </Link>
                 <Link
                   href="/infosec-policy"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block text-xs text-slate-600 hover:text-[#0B66C3]"
                 >
                   InfoSec & Cyber Code
                 </Link>
                 <Link
                   href="/sustainability"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block text-xs text-slate-600 hover:text-[#059669]"
                 >
                   Sustainability & Clean Energy
                 </Link>
                 <Link
                   href="/vendor-portal"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block text-xs text-slate-600 hover:text-[#0B66C3]"
                 >
                   Vendor / OEM Portal
                 </Link>
                 <Link
                   href="/amc-sla"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block text-xs text-slate-600 hover:text-[#0B66C3]"
                 >
                   24/7 AMC SLA Tiers
                 </Link>
                 <Link
                   href="/careers"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block text-xs text-[#0B66C3] font-semibold"
                 >
                   Engineering Careers
@@ -487,6 +506,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
 
             <Link
               href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
               className="block py-2 text-sm font-bold text-slate-900 hover:text-[#0B66C3]"
             >
               Contact & Offices
@@ -509,7 +529,7 @@ export function Navbar({ onOpenRfp }: { onOpenRfp?: () => void }) {
                 else {
                   const el = document.getElementById("rfp-generator");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
-                  else window.location.href = "/contact#rfp-form";
+                  else router.push("/contact#rfp-form");
                 }
               }}
               className="w-full py-3 rounded-xl bg-[#0B66C3] text-white text-xs font-bold text-center shadow"

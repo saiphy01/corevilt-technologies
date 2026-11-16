@@ -4,7 +4,6 @@ import { useState } from "react";
 import confetti from "canvas-confetti";
 import {
   UploadCloud,
-  FileCheck,
   CheckCircle2,
   AlertCircle,
   Loader2,
@@ -12,9 +11,6 @@ import {
   Shield,
   Building,
   Mail,
-  Phone,
-  FileText,
-  MapPin,
 } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/constants";
 
@@ -135,9 +131,12 @@ export function RfpSection() {
           origin: { y: 0.6 },
           colors: ["#0B66C3", "#059669", "#0284C7"],
         });
-      } catch (e) {}
-    } catch (err: any) {
-      setErrorMsg(err.message || "An unexpected error occurred. Please try again.");
+      } catch {
+        // confetti is non-critical visual enhancement
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "An unexpected error occurred. Please try again.";
+      setErrorMsg(msg);
     } finally {
       setLoading(false);
     }
@@ -182,6 +181,14 @@ export function RfpSection() {
               <div>• Transmitted To: Central Technical Design Office (info@corevilt.com)</div>
               <div>• Priority Dispatch: Delhi HQ & Bareilly Hub Regional Engineers</div>
               <div>• Direct Line: {COMPANY_INFO.phone}</div>
+              {fileName && (
+                <div className="pt-2 mt-2 border-t border-slate-800 text-[#38bdf8]">
+                  • Attached Scope File: <span className="text-white font-bold">{fileName}</span>
+                  <div className="text-[11px] text-slate-400 font-sans mt-0.5">
+                    For multi-sheet CAD/DWG packages, you may also email files referencing <strong className="text-white">{submittedResult.referenceId}</strong> directly to info@corevilt.com.
+                  </div>
+                </div>
+              )}
             </div>
 
             <button
@@ -293,10 +300,9 @@ export function RfpSection() {
                 {VERTICAL_OPTIONS.map((v) => {
                   const checked = selectedVerticals.includes(v);
                   return (
-                    <div
+                    <label
                       key={v}
-                      onClick={() => toggleVertical(v)}
-                      className={`cursor-pointer p-3 rounded-xl border text-xs font-medium transition flex items-center gap-2.5 ${
+                      className={`cursor-pointer p-3 rounded-xl border text-xs font-medium transition flex items-center gap-2.5 select-none ${
                         checked
                           ? "bg-blue-950/60 border-blue-500 text-white ring-1 ring-blue-500/30"
                           : "bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700"
@@ -305,11 +311,11 @@ export function RfpSection() {
                       <input
                         type="checkbox"
                         checked={checked}
-                        onChange={() => {}}
+                        onChange={() => toggleVertical(v)}
                         className="rounded border-slate-700 text-[#0B66C3] focus:ring-0"
                       />
                       <span className="leading-tight">{v}</span>
-                    </div>
+                    </label>
                   );
                 })}
               </div>

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Phone, Mail, MapPin, ShieldCheck, Clock } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/constants";
 
 export function TopBar() {

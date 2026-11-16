@@ -3,17 +3,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowLeft,
-  ArrowRight,
   CheckCircle2,
-  ShieldCheck,
   Cpu,
-  Layers,
-  Wrench,
   Boxes,
   FileText,
-  Activity,
 } from "lucide-react";
-import { CORE_VERTICALS, COMPANY_INFO } from "@/lib/constants";
+import { CORE_VERTICALS } from "@/lib/constants";
 import { RfpSection } from "@/components/rfp-section";
 
 export async function generateStaticParams() {

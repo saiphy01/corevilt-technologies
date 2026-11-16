@@ -2,12 +2,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   ShieldCheck,
-  CheckCircle2,
-  TrendingUp,
-  Building,
-  Zap,
-  Server,
-  Layers,
 } from "lucide-react";
 import { FEATURED_PROJECTS } from "@/lib/constants";
 

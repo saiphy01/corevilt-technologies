@@ -1,14 +1,9 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import {
   ClipboardList,
   CheckCircle2,
   FileCheck,
-  Shield,
-  Layers,
-  ArrowRight,
   ShieldCheck,
-  FileSpreadsheet,
 } from "lucide-react";
 import { METHODOLOGY_PHASES, DELIVERY_TRIAD } from "@/lib/constants";
 

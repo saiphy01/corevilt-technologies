@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Boxes, CheckCircle2, ShieldCheck, FileText, ArrowRight } from "lucide-react";
+import { ArrowLeft, Boxes, CheckCircle2 } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {

@@ -11,11 +11,8 @@ import {
   Wrench,
   Compass,
   ArrowRight,
-  CheckCircle2,
-  Activity,
   Layers,
 } from "lucide-react";
-import { CORE_VERTICALS } from "@/lib/constants";
 
 export function BentoGrid() {
   return (

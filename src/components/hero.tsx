@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   ArrowRight,
   ChevronLeft,
@@ -24,7 +25,7 @@ interface ShowcaseSlide {
 const SHOWCASE_SLIDES: ShowcaseSlide[] = [
   {
     id: "headquarters",
-    image: "/office-reception.png",
+    image: "/office-reception.webp",
     verticalCode: "HEADQUARTERS",
     badge: "DELHI & BAREILLY",
     title: "Corevilt Technologies Corporate HQ",
@@ -35,7 +36,7 @@ const SHOWCASE_SLIDES: ShowcaseSlide[] = [
   },
   {
     id: "software",
-    image: "https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?auto=format&fit=crop&w=1920&q=80",
+    image: "/software.jpg",
     verticalCode: "VERTICAL 01",
     badge: "DIGITAL SYSTEMS",
     title: "Custom Enterprise Software & ERP/CRM",
@@ -46,7 +47,7 @@ const SHOWCASE_SLIDES: ShowcaseSlide[] = [
   },
   {
     id: "energy",
-    image: "https://images.pexels.com/photos/9875408/pexels-photo-9875408.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    image: "/energy.jpg",
     verticalCode: "VERTICAL 06",
     badge: "SOLAR EPC",
     title: "C&I Rooftop Solar EPC & Storage",
@@ -57,7 +58,7 @@ const SHOWCASE_SLIDES: ShowcaseSlide[] = [
   },
   {
     id: "security",
-    image: "https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    image: "/secure.jpg",
     verticalCode: "VERTICAL 05",
     badge: "ELV SECURITY",
     title: "4K AI CCTV & Integrated BMS Systems",
@@ -68,7 +69,7 @@ const SHOWCASE_SLIDES: ShowcaseSlide[] = [
   },
   {
     id: "infrastructure",
-    image: "https://images.pexels.com/photos/4508751/pexels-photo-4508751.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    image: "/infra.jpg",
     verticalCode: "VERTICAL 02",
     badge: "IT INFRASTRUCTURE",
     title: "Mission-Critical Server Virtualization",
@@ -88,6 +89,7 @@ const CAPABILITY_PILLS = [
 ];
 
 export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
+  const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCapabilityIndex, setActiveCapabilityIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -106,8 +108,6 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
       if (slideTimerRef.current) clearInterval(slideTimerRef.current);
     };
   }, [isPaused]);
-
-  const slide = SHOWCASE_SLIDES[currentSlide];
 
   return (
     <>
@@ -175,7 +175,7 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                     else {
                       const el = document.getElementById("rfp-generator");
                       if (el) el.scrollIntoView({ behavior: "smooth" });
-                      else window.location.href = "/contact#rfp-form";
+                      else router.push("/contact#rfp-form");
                     }
                   }}
                   className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-[#0B66C3] hover:bg-[#09529e] text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-600/25 hover:scale-105 transition-all duration-200"
@@ -224,10 +224,13 @@ export function HeroSection({ onOpenRfp }: { onOpenRfp?: () => void }) {
                       }`}
                     >
                       {/* Authentic, 100% full-brightness, vivid photograph */}
-                      <img
+                      <Image
                         src={s.image}
                         alt={s.title}
-                        className="h-full w-full object-cover object-center transform transition-transform duration-[6000ms] ease-out scale-100 group-hover/showcase:scale-105"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 42vw"
+                        priority={index === 0}
+                        className="object-cover object-center transform transition-transform duration-[6000ms] ease-out scale-100 group-hover/showcase:scale-105"
                       />
 
                       {/* Clean bottom information badge (high-contrast frosted glass) */}

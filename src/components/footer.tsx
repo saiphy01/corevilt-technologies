@@ -6,16 +6,8 @@ import {
   Phone,
   Mail,
   MapPin,
-  ShieldCheck,
-  CheckCircle2,
   ArrowUpRight,
   MessageSquare,
-  Award,
-  Shield,
-  FileText,
-  Zap,
-  Cpu,
-  HeartHandshake,
 } from "lucide-react";
 import { COMPANY_INFO, CORE_VERTICALS } from "@/lib/constants";
 
@@ -67,9 +59,11 @@ export function Footer() {
         {/* Brand & Identity Column (4 cols) */}
         <div className="lg:col-span-4 space-y-5">
           <Link href="/" className="inline-block bg-white px-3.5 py-2.5 rounded-2xl shadow-md hover:shadow-lg transition">
-            <img
+            <Image
               src="/logo.png"
               alt="COREVILT Technologies"
+              width={220}
+              height={48}
               className="h-11 sm:h-12 w-auto max-w-[220px] object-contain"
             />
           </Link>

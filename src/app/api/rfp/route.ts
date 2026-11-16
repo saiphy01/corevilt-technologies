@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Insert into Supabase table
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("corevilt_rfp_submissions")
       .insert([
         {
@@ -45,8 +45,7 @@ export async function POST(req: NextRequest) {
           file_name: fileName || null,
           status: "received",
         },
-      ])
-      .select();
+      ]);
 
     if (error) {
       console.error("Supabase insert error:", error);
@@ -64,7 +63,7 @@ export async function POST(req: NextRequest) {
       message: "Technical RFP received. Our design office will review your specifications and contact you within 4 business hours.",
       submittedAt: new Date().toISOString(),
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("RFP API route exception:", err);
     return NextResponse.json(
       { error: "Internal server error while processing technical proposal request." },

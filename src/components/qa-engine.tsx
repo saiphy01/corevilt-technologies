@@ -1,13 +1,9 @@
 import {
-  CheckCircle2,
-  Bug,
   Laptop,
-  Smartphone,
   Gauge,
   ShieldAlert,
   Terminal,
   Activity,
-  Layers,
 } from "lucide-react";
 import { QA_FRAMEWORK_STEPS } from "@/lib/constants";
 
@@ -53,7 +49,7 @@ export function QAEngineSection() {
 
         {/* 4-Step Horizontal Pipeline */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {QA_FRAMEWORK_STEPS.map((step, index) => (
+          {QA_FRAMEWORK_STEPS.map((step) => (
             <div
               key={step.step}
               className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-[#0B66C3] transition"

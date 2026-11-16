@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ShieldAlert, CheckCircle2, Zap, HeartPulse, HardHat } from "lucide-react";
-import { COMPANY_INFO } from "@/lib/constants";
+import { ArrowLeft, CheckCircle2, HardHat } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Health, Safety & Environment (HSE) Policy | Corevilt Technologies",

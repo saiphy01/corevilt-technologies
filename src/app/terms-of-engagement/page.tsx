@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, FileText } from "lucide-react";
-import { COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Engagement | Corevilt Technologies",

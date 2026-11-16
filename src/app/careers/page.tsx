@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Users, Briefcase, MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
-import { COMPANY_INFO } from "@/lib/constants";
+import { ArrowLeft, Users, MapPin, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Engineering Careers & Opportunities | Corevilt Technologies",

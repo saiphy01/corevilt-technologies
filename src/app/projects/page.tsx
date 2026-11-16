@@ -1,17 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import {
-  ShieldCheck,
-  CheckCircle2,
-  TrendingUp,
-  MapPin,
-  Calendar,
-  Building,
-  ArrowRight,
-  Zap,
-  Server,
-  Layers,
-} from "lucide-react";
+import { ShieldCheck, MapPin } from "lucide-react";
 import { FEATURED_PROJECTS } from "@/lib/constants";
 import { RfpSection } from "@/components/rfp-section";
 

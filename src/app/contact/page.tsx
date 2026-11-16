@@ -1,14 +1,11 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import {
   Phone,
   Mail,
   MapPin,
   Clock,
-  ShieldCheck,
   Building2,
   MessageSquare,
-  ArrowRight,
   ExternalLink,
 } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/constants";
@@ -201,8 +198,8 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Department Routing Matrix */}
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+        {/* Department Routing Matrix & AMC Portal Anchor */}
+        <div id="amc-portal" className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6 scroll-mt-24">
           <div className="max-w-2xl space-y-1">
             <h3 className="text-xl font-bold text-slate-900">
               Departmental Routing & Directory

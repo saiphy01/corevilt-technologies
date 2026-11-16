@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Shield, Lock, Key, Server, CheckCircle2 } from "lucide-react";
-import { COMPANY_INFO } from "@/lib/constants";
+import { ArrowLeft, Lock, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Information Security & Cybersecurity Standards | Corevilt",

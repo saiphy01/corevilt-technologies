@@ -1,20 +1,15 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import {
   ShieldCheck,
-  CheckCircle2,
-  Users,
   Building2,
   Target,
   Award,
-  ArrowRight,
   Zap,
-  Cpu,
-  Layers,
   Sparkles,
-  MapPin,
+  HeartHandshake,
+  TrendingUp,
 } from "lucide-react";
-import { COMPANY_INFO, DELIVERY_TRIAD } from "@/lib/constants";
+import { COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Corevilt Technologies | Corporate Leadership & Turnkey Model",
@@ -30,6 +25,11 @@ export default function AboutPage() {
       icon: <ShieldCheck className="w-5 h-5 text-[#0B66C3]" />,
     },
     {
+      name: "Customer Focus",
+      desc: "Engineering designed around site conditions, genuine operational needs, and long-term client value creation.",
+      icon: <HeartHandshake className="w-5 h-5 text-[#0284C7]" />,
+    },
+    {
       name: "Quality",
       desc: "CPRI-certified switchgear, Fluke certified network drops, and strict adherence to IS, CEA, and NFPA safety codes.",
       icon: <Award className="w-5 h-5 text-[#059669]" />,
@@ -43,6 +43,11 @@ export default function AboutPage() {
       name: "Innovation",
       desc: "Modernizing traditional infrastructure with AI analytics, real-time SCADA telemetry, and cloud-native software platforms.",
       icon: <Sparkles className="w-5 h-5 text-[#0B66C3]" />,
+    },
+    {
+      name: "Continuous Improvement",
+      desc: "Systematic post-implementation audits, proactive preventive maintenance, and continuous lifecycle upgrades.",
+      icon: <TrendingUp className="w-5 h-5 text-[#059669]" />,
     },
   ];
 
@@ -121,11 +126,11 @@ export default function AboutPage() {
               Corporate Values
             </h2>
             <p className="text-sm text-slate-600">
-              Every proposal, single line diagram, cable pull, and line of code adheres to our 4 foundational pillars:
+              Every proposal, single line diagram, cable pull, and line of code adheres to our 6 foundational values:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {corporateValues.map((v, i) => (
               <div key={i} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                 <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center border border-slate-100">
@@ -133,6 +138,52 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-lg font-bold text-slate-900">{v.name}</h3>
                 <p className="text-xs text-slate-600 leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Corporate Approach */}
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 space-y-6">
+          <div className="max-w-2xl space-y-2">
+            <div className="text-xs font-mono uppercase tracking-wider text-[#059669] font-bold">
+              ENGINEERING PHILOSOPHY
+            </div>
+            <h2 className="text-2xl font-extrabold text-[#0F172A]">
+              Our Structured Approach
+            </h2>
+            <p className="text-sm text-slate-600">
+              Business-first engineering, backed by clear scope, structured delivery, and measurable verification.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                step: "01",
+                title: "Understand Requirement",
+                desc: "Assess site realities, operational workflows, and stakeholder goals before proposing technology.",
+              },
+              {
+                step: "02",
+                title: "Design for Fit",
+                desc: "Engineer scalable, maintainable architectures with transparent BOQs and zero vendor lock-in.",
+              },
+              {
+                step: "03",
+                title: "Execute Responsibly",
+                desc: "Disciplined stage-gate execution under certified professionals with uncompromising safety standards.",
+              },
+              {
+                step: "04",
+                title: "Support Full Lifecycle",
+                desc: "Protect operational continuity through preventive maintenance, 24/7 SLA response, and proactive enhancements.",
+              },
+            ].map((app) => (
+              <div key={app.step} className="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
+                <div className="font-mono text-xs font-bold text-[#0B66C3]">STEP {app.step}</div>
+                <h3 className="font-bold text-slate-900 text-sm">{app.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{app.desc}</p>
               </div>
             ))}
           </div>

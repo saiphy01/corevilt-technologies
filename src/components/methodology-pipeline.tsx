@@ -5,15 +5,7 @@ import {
   FileCheck,
   CheckCircle2,
   Shield,
-  Layers,
-  ArrowRight,
   ClipboardList,
-  Cpu,
-  Search,
-  PenTool,
-  Wrench,
-  Activity,
-  FileSpreadsheet,
 } from "lucide-react";
 import { METHODOLOGY_PHASES, DELIVERY_TRIAD } from "@/lib/constants";
 

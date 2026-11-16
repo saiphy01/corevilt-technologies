@@ -10,9 +10,6 @@ import {
   Home,
   Landmark,
   ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  TrendingUp,
 } from "lucide-react";
 import { INDUSTRIES } from "@/lib/constants";
 
