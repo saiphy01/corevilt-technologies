@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import {
   UploadCloud,
@@ -11,6 +11,7 @@ import {
   Shield,
   Building,
   Mail,
+  Sparkles,
 } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/constants";
 
@@ -59,6 +60,40 @@ export function RfpSection() {
     referenceId: string;
     message: string;
   } | null>(null);
+  const [prefilledNotice, setPrefilledNotice] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handlePrefill = (event: Event) => {
+      const customEvent = event as CustomEvent<{
+        verticals?: string[];
+        budgetTier?: string;
+        location?: string;
+        detailedBrief?: string;
+      }>;
+      const data = customEvent.detail;
+      if (!data) return;
+
+      if (data.verticals && Array.isArray(data.verticals)) {
+        setSelectedVerticals((prev) => {
+          const merged = new Set([...prev, ...data.verticals!]);
+          return Array.from(merged);
+        });
+      }
+      if (data.budgetTier && BUDGET_TIERS.includes(data.budgetTier)) {
+        setBudgetTier(data.budgetTier);
+      }
+      if (data.location && LOCATIONS.includes(data.location)) {
+        setLocation(data.location);
+      }
+      if (data.detailedBrief) {
+        setDetailedBrief(data.detailedBrief);
+      }
+      setPrefilledNotice("Technical parameters imported from Executive Feasibility Calculator.");
+    };
+
+    window.addEventListener("prefill-rfp", handlePrefill);
+    return () => window.removeEventListener("prefill-rfp", handlePrefill);
+  }, []);
 
   const toggleVertical = (v: string) => {
     if (selectedVerticals.includes(v)) {
@@ -211,6 +246,22 @@ export function RfpSection() {
             onSubmit={handleSubmit}
             className="rounded-2xl bg-[#0F172A] border border-slate-800 p-6 sm:p-10 shadow-2xl space-y-6"
           >
+            {prefilledNotice && (
+              <div className="p-4 rounded-xl bg-emerald-950/70 border border-emerald-500/50 text-emerald-200 text-xs font-mono flex items-center justify-between gap-3 animate-fade-in">
+                <div className="flex items-center gap-2.5">
+                  <Sparkles className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <span>{prefilledNotice}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setPrefilledNotice(null)}
+                  className="text-emerald-400 hover:text-white font-bold"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
+
             {errorMsg && (
               <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-red-200 text-xs font-medium flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
