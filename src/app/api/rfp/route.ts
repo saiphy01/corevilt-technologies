@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
           phone,
           verticals: verticals || [],
           location: location || "Delhi NCR",
-          budget_tier: budgetTier || "₹10L - ₹50L",
+          budget_tier: budgetTier || "₹25 Lakhs – ₹1 Crore",
           detailed_brief: detailedBrief || "",
           file_name: fileName || null,
           status: "received",

@@ -28,12 +28,15 @@ const TARIFF_OPTIONS = [
 ];
 
 function formatIndianCurrency(amount: number): string {
-  if (amount >= 10000000) {
-    return `₹${(amount / 10000000).toFixed(2)} Crores`;
-  } else if (amount >= 100000) {
-    return `₹${(amount / 100000).toFixed(2)} Lakhs`;
+  const isNegative = amount < 0;
+  const absAmount = Math.abs(amount);
+  const prefix = isNegative ? "-₹" : "₹";
+  if (absAmount >= 10000000) {
+    return `${prefix}${(absAmount / 10000000).toFixed(2)} Crores`;
+  } else if (absAmount >= 100000) {
+    return `${prefix}${(absAmount / 100000).toFixed(2)} Lakhs`;
   }
-  return `₹${Math.round(amount).toLocaleString("en-IN")}`;
+  return `${prefix}${Math.round(absAmount).toLocaleString("en-IN")}`;
 }
 
 export function SolarRoiCalculator() {
